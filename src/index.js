@@ -1,4 +1,4 @@
-import EmscriptenDemo from "./EmscriptenDemo.js";
+import EmscriptenDemo from "EmscriptenDemo";
 
 const root = document.getElementById("root");
 

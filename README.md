@@ -11,7 +11,8 @@ Clone the repository and `npm install`.
 
 ## To Do
 
-- Use a bundler to emit HTML, JavaScript, CSS etc
+- Use a bundler to emit HTML, JavaScript, CSS etc (in progress)
+- - Extend bundler config to watch and build emscripten bundle
 - Add typescript and typing for the emscripten module
 
 ## Notes
