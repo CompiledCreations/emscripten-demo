@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf build && mkdir build",
+    "docker": "docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) emscripten/emsdk",
     "build": "npm run build:generate && npm run build:build && npm run build:web",
     "build:debug": "npm run build:generate:debug && npm run build:build",
-    "build:generate": "emcmake cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .",
-    "build:generate:debug": "emcmake cmake -DCMAKE_BUILD_TYPE=Debug -Bbuild .",
-    "build:build": "cmake --build build",
+    "build:generate": "npm run docker -- emcmake cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .",
+    "build:generate:debug": "npm run docker -- emcmake cmake -DCMAKE_BUILD_TYPE=Debug -Bbuild .",
+    "build:build": "npm run docker -- cmake --build build",
     "build:web": "cp ./src/index.html ./build/ && cp ./src/index.js ./build/",
     "start": "serve -s ./build",
     "test": "echo \"Error: no test specified\" && exit 1"

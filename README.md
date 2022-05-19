@@ -13,3 +13,7 @@ Clone the repository and `npm install`.
 
 - Use a bundler to emit HTML, JavaScript, CSS etc
 - Add typescript and typing for the emscripten module
+
+## Notes
+
+Using the emscripten/emsdk docker image to compile the emscripten module. Use `npm run docker -- [command]` to run command inside the emscripten environment.
