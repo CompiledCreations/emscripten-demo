@@ -4,9 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run build:generate && npm run build:build && npm run build:web",
+    "build:debug": "npm run build:generate:debug && npm run build:build",
+    "build:generate": "emcmake cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .",
+    "build:generate:debug": "emcmake cmake -DCMAKE_BUILD_TYPE=Debug -Bbuild .",
+    "build:build": "cmake --build build",
+    "build:web": "cp ./src/index.html ./build/ && cp ./src/index.js ./build/",
+    "start": "serve -s ./build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^2.6.2",
+    "serve": "^13.0.2"
+  }
 }
