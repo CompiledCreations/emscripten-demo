@@ -1,6 +1,7 @@
-const HookShellScriptPlugin = require("hook-shell-script-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+
+const EmscriptenBuildWebpackPlugin = require("./emscripten-build-webpack-plugin");
 
 module.exports = {
   devServer: {
@@ -19,6 +20,7 @@ module.exports = {
   },
   externalsType: "module",
   output: {
+    clean: true,
     filename: "index.js",
     path: path.resolve(__dirname, "build")
   },
@@ -26,6 +28,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       scriptLoading: "module",
       template: "./src/index.ejs"
-    })
+    }),
+    new EmscriptenBuildWebpackPlugin()
   ]
 };

@@ -6,14 +6,11 @@
   "scripts": {
     "clean": "rm -rf build && mkdir build",
     "docker": "docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) emscripten/emsdk",
-    "build": "npm run build:emscripten && npm run build:web",
-    "build:emscripten": "npm run build:generate && npm run build:build",
-    "build:debug": "npm run build:generate:debug && npm run build:build",
-    "build:generate": "npm run docker -- emcmake cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .",
-    "build:generate:debug": "npm run docker -- emcmake cmake -DCMAKE_BUILD_TYPE=Debug -Bbuild .",
-    "build:build": "npm run docker -- cmake --build build",
-    "build:web": "webpack --config webpack.config.js --mode production",
-    "start": "npm run build:emscripten && webpack serve --mode development",
+    "build": "webpack --config webpack.config.js --mode production",
+    "emscripten:generate": "npm run docker -- emcmake cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .",
+    "emscripten:generate:debug": "npm run docker -- emcmake cmake -DCMAKE_BUILD_TYPE=Debug -Bbuild .",
+    "emscripten:build": "npm run docker -- cmake --build build",
+    "start": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +21,7 @@
     "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.6.2",
     "serve": "^13.0.2",
+    "shelljs": "^0.8.5",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
