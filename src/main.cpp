@@ -15,8 +15,8 @@ void Hello()
     std::cout << GetGreeting() << "\n";
 }
 
-
-EMSCRIPTEN_BINDINGS(EmscriptenDemo) {
+EMSCRIPTEN_BINDINGS(EmscriptenDemo)
+{
     function("hello", &Hello);
     function("getGreeting", &GetGreeting);
 }
